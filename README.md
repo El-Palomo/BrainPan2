@@ -189,6 +189,35 @@ x/180wx $esp
 0xbfffffb4:	0x653d474e	0x53555f6e	0x4654552e	0x4c00382d
 ```
 
+<img src="https://github.com/El-Palomo/BrainPan2/blob/main/Brain9.jpg" width="80%"></img>
+
+
+5. Colocar el  SHELLCODE
+
+Al colocar las direcciones 0xbfffff04, 0xbfffff14, etc, direcciones en donde se encuentran los NOPS nuestra SHELLCODE no funciona. 
+Leyendo sobre como solucionar este problema, al parecer se debe a que el BUFFER es muy pequeño para el tamaño de la SHELLCODE por lo que existe un "truco". El truco consiste en colocar lo NOPS y SHELLCODE en una variable de entorno, obtener la dirección de memoria de la variable de entorno y apunto el registro EIP a dicha dirección.
+
+```
+#include <stdio.h>
+#include <stdlib.h>
+ 
+int main(void)
+{
+  char *s = getenv("EGG");
+  printf("EGG => %p\n", s);
+  return 0;
+}
+```
+> Debido a que no existe el compilador GCC en el computador BRAINPAN2, lo vamos a compilar en nuestro KALI.
+
+<img src="https://github.com/El-Palomo/BrainPan2/blob/main/Brain10.jpg" width="80%"></img>
+
+
+
+
+
+
+
 
 
 
