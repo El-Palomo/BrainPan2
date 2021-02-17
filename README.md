@@ -29,3 +29,36 @@ SF:\x20\x20\x20\x20\x20\x20_\|_\|_\|\x20\x20\x20\x20_\|_\|_\|\x20\x20\x20\
 ```
 
 <img src="https://github.com/El-Palomo/BrainPan2/blob/main/Brain1.jpg" width="60%"></img>
+
+## Enumeracion de Carpetas 
+```
+root@kali:~/BRAINPAN2# gobuster dir -u http://192.168.78.137:10000/ -w /usr/share/wordlists/dirbuster/directory-list-1.0.txt
+===============================================================
+Gobuster v3.0.1
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@_FireFart_)
+===============================================================
+[+] Url:            http://192.168.78.137:10000/
+[+] Threads:        10
+[+] Wordlist:       /usr/share/wordlists/dirbuster/directory-list-1.0.txt
+[+] Status codes:   200,204,301,302,307,401,403
+[+] User Agent:     gobuster/3.0.1
+[+] Timeout:        10s
+===============================================================
+2021/02/17 11:14:47 Starting gobuster
+===============================================================
+/bin (Status: 301)
+===============================================================
+2021/02/17 11:16:05 Finished
+===============================================================
+```
+<img src="https://github.com/El-Palomo/BrainPan2/blob/main/Brain2.jpg" width="60%"></img>
+
+
+## Análisis del archivo BRAINPAN.EXE
+El archivo EXE realmente es una archivo del JPEG
+
+<img src="https://github.com/El-Palomo/BrainPan2/blob/main/Brain3.jpg" width="60%"></img>
+
+## Conexión 
+
+
